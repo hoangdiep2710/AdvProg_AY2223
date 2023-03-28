@@ -14,9 +14,8 @@ using namespace std;
 ***/
 int generateRandomNumber() {
     // TODO: Return the random number in range 1 to 100
-    srand(time(NULL));
-    int a= 1+ rand()%100;
-    return 100;
+    srand(time(0));
+    return rand() % 100 + 1;
 }
 
 
@@ -80,7 +79,7 @@ bool checkSuccess(string answer) {
 bool checkContinuePlaying(char isContinued) {
     // TODO: return result after checking player continue playing or not
     bool result = false;
-if(isContinued=='c'||isContinued=='C' ){result= true;}
+if(isContinued=='y'||isContinued=='Y' ){result= true;}
     return result;
 }
 
