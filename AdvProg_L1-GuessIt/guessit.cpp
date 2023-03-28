@@ -31,7 +31,7 @@ int getPlayerGuess() {
     int a;
     cout<<"Your guess is ";
     cin>>a;
-    return 1;
+    return a;
 }
 
 
