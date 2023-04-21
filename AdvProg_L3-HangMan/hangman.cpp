@@ -21,13 +21,13 @@ int generateRandomNumber(const int min, const int max)
 
 vector<string> readWordListFromFile(const string& filePath)
 {
-    vector<string> wordList;
+vector<string> wordList;
     string word;
     ifstream wordFile (filePath);
     if (!wordFile.is_open()) {
         throw domain_error("Unable to open file");
     }
-
+    
     //while ( getline (wordFile, word) ){  // Thong thuong doc tung line. 
                                            // Chuong trinh nay cung chay.
     while (wordFile >> word) {  // Nhung voi chuong trinh nay, doc tung word cung duoc
@@ -101,7 +101,7 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TOD for (int i = 0; i < word.length(); ++i)
-    {
+    for (int i = 0; i < word.length(); ++i){
         if (word[i] == ch)
         {
             secretWord[i] = ch;
