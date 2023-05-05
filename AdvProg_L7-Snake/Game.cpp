@@ -79,7 +79,7 @@ void Game::nextStep()
 			break;
 		}
     }
-	}
+	
     snake.move(currentDirection);
 }
 void Game::addCherry()
