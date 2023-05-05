@@ -1,3 +1,4 @@
+// UPDATE THIS FILE
 #include <vector>
 #include <cassert>
 #include <cstdlib>
@@ -5,27 +6,20 @@
 #include "Game.h"
 
 using namespace std;
-// set some attributes as default value
-// DO NOT CHANGE THIS CONSTRUCTOR
 Game::Game(int _width, int _height)
-: width(_width), height(_height),						  // play screen
-	  squares(_height, vector<CellType>(_width, CELL_EMPTY)), // cell coordinates
-       snake(*this, Position(_width / 2, _height / 2)),		  // init snake positin in middle of play screen
+:width(_width), height(_height),						  // play screen
+	  squares(_height, vector<CellType>(_width, CELL_EMPTY)),snake(*this, Position(_width / 2, _height / 2)),		  // init snake positin in middle of play screen
 	  currentDirection(Direction::RIGHT),
 	  status(GAME_RUNNING),
 	  score(0)
-{
+	  {
 	// add new cheery in game initiation
 	addCherry();
 }
 
 Game::~Game()
-{
-    /***
- * PLEASE UPDATE THIS METHOD
- * *
- ***/
-
+{// dtor
+}
 void Game::snakeMoveTo(Position pos)
 {
 	switch (getCellType(pos))
@@ -55,7 +49,8 @@ void Game::snakeLeave(Position position)
 	setCellType(position, CELL_EMPTY);
 }
 void Game::processUserInput(Direction direction)
-{inputQueue.push(direction);
+{
+	inputQueue.push(direction);
 }
 bool Game::canChange(Direction current, Direction next) const
 {
@@ -68,37 +63,29 @@ bool Game::canChange(Direction current, Direction next) const
 
 void Game::nextStep()
 {
-    while (!inputQueue.empty())
-	{
-        Direction next;
+	while (!inputQueue.empty())
+	{ Direction next;
 		next = inputQueue.front();
-        inputQueue.pop();
-        if (canChange(currentDirection, next))
+		inputQueue.pop();
+		if (canChange(currentDirection, next))
 		{
 			currentDirection = next;
 			break;
 		}
     }
-	
-    snake.move(currentDirection);
+	snake.move(currentDirection);
 }
 void Game::addCherry()
-{do
+{
+	do
 	{
-        Position randomPos;
+		Position randomPos;
 		randomPos = Position(rand() % width, rand() % height);
-
-        	// assign the cherry position as randomPos, and set randomPos type as CELL_CHERRY
-		// check if the randomPos is EMPTY
 		if (getCellType(randomPos) == CELL_EMPTY)
 		{
-
-			// YOUR CODE HERE
-			// YOUR CODE HERE
-			// assign the cherry position as randomPos, and set randomPos type as CELL_CHERRY
 			cherryPosition = randomPos;
 			setCellType(randomPos, CELL_CHERRY);
-            break;
+			break;
 		}
 	} while (true);
 }
@@ -123,8 +110,9 @@ CellType Game::getCellType(Position pos) const
 // DO NOT change this method
 vector<Position> Game::getSnakePositions() const
 {
-    return snake.getPositions();}
-    GameStatus Game::getGameStatus()
+	return snake.getPositions();
+}
+GameStatus Game::getGameStatus()
 {
 	return status;
 }
@@ -135,7 +123,8 @@ int Game::getWidth()
 int Game::getHeight()
 {
 	return height;
-}Snake Game::getSnake()
+}
+Snake Game::getSnake()
 {
 	return snake;
 }
